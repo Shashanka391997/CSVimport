@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read CSV files with javascript fetch method</title>
+    <style>
+        td {
+            border: 4px solid red;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>code</thead>
+        <thead>name</thead>
+        <thead>batch</thead>
+        <select class="table-filter">
+            <option value="all"></option>
+        </select>
+        <thead>stock</thead>
+        <select class="table-filter">
+            <option value="all"></option>
+        </select>
+        <thead>deal</thead>
+        <select class="table-filter">
+            <option value="all"></option>
+        </select>
+        <thead>free</thead>
+        <select class="table-filter">
+            <option value="all"></option>
+        </select>
+        <thead>mrp</thead>
+        <select class="table-filter">
+            <option value="all"></option>
+        </select>
+        <thead>rate</thead>
+        <select class="table-filter">
+            <option value="all"></option>
+        </select>
+        <thead>exp</thead>
+        <select class="table-filter">
+            <option value="all"></option>
+        </select>
+        <thead>company</thead>
+        <select class="table-filter">
+            <option value="all"></option>
+        </select>
+        <thead>supplier</thead>
+        <select class="table-filter">
+            <option value="all"></option>
+        </select>
+    </table>
+    <script>
+
+        onload = fetch("./Sample-Inventory.csv").then(res => {
+            return res.text()
+        }).then(data => {
+            let result = data.split(/\r?\n|\r/).map(e => {
+                return e.split(",")
+            })
+            result.forEach(e => {
+                let m = e.map(e => {
+                    return `<td>${e}</td>`;
+                }).join("")
+                let ce = document.createElement("tr");
+                ce.innerHTML = m;
+                if (ce.innerText != "") {
+                    document.querySelector("table").appendChild(ce);
+                }
+                // console.log(m);
+ 
+            })
+        })
+    </script>
+</body>
+</html>
