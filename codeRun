@@ -1,0 +1,1 @@
+With Python 2.7 installed, go into the folder where your project is served, like cd my-project/. And then use python -m SimpleHTTPServer which would make index.html and it's JavaScript files available at localhost:8000.
